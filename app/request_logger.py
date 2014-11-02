@@ -1,6 +1,5 @@
 import time
 import json
-#import base64
 
 from flask import session, request
 
@@ -45,9 +44,6 @@ def after(response):
             'timestamp': time.time(),
             'session': dict(session),
             'headers': dict(response.headers)
-            # does not work with 404
-            #'data': str(response.response[0])
-            #'data': str(base64.b64encode(response.response[0]))
-            }
+    }
     log(response_)
     return response
