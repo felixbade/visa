@@ -18,13 +18,21 @@ def q():
         question = possible_questions[0]
         if questions.is_such_question(question):
             session['answers'].update({question: request.form[question]})
+            session['qnumber'] += 1
     
-    question_and_answers = questions.get_question_and_answers_by_answered_questions(session['answers'])
+    question_and_answers = questions.get_question_and_answers_by_number(session['qnumber'])
 
     if question_and_answers is None:
         return render_template('ready.html')
 
     question = question_and_answers['question']
     answers = question_and_answers['answers']
+    if question in session['answers']:
+        selected = session['answers'][question]
 
-    return render_template('question.html', question=question, answers=answers)
+    return render_template('question.html', question=question, answers=answers, selected=selected)
+
+@app.route('/uudestaan')
+def again():
+    session['qnumber'] = 0
+    return q()

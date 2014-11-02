@@ -5,6 +5,11 @@ from config import questions_file
 with open(questions_file) as f:
     question_list = yaml.safe_load(f)
 
+def get_question_and_answers_by_number(number):
+    if number >= 0 and number < len(question_list):
+        return question_list[number]
+    return None
+
 def get_question_and_answers_by_answered_questions(answered):
     for question in question_list:
         if question['question'] not in answered:

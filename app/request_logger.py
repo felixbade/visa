@@ -22,10 +22,12 @@ def get_next_id():
 def before():
     # TODO: this really should not be here, but where?
     session.permanent = True
-    if not 'id' in session:
+    if not 'id' in session or type(session['id']) is not int:
         session['id'] = get_next_id()
     if not 'answers' in session or type(session['answers']) is not dict:
         session['answers'] = {}
+    if not 'qnumber' in session or type(session['qnumber']) is not int:
+        session['qnumber'] = 0
     
     request_ = {
             'type': 'request',
