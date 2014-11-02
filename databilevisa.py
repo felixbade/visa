@@ -11,7 +11,8 @@ elif pid < 0:
     print('Could not fork: %d' % pid)
     exit(1)
 
-# we are behind a proxy. log the ip of the end-user, not the proxy
+# we are behind a proxy. log the ip of the end-user, not the proxy.
+# this will also work without a proxy
 import werkzeug.serving
 werkzeug.serving.WSGIRequestHandler.address_string = lambda self: self.headers.get('x-real-ip', self.client_address[0])
 
