@@ -21,11 +21,10 @@ def get_next_id():
 
 @app.before_request
 def before():
+    # TODO: this really should not be here, but where?
     session.permanent = True
     if not 'id' in session:
         session['id'] = get_next_id()
-
-    # TODO: this really should not be here, but where?
     if not 'answers' in session or type(session['answers']) is not dict:
         session['answers'] = {}
     
