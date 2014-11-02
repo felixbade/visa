@@ -21,3 +21,10 @@ def is_such_question(question_text):
         if question_and_answer['question'] == question_text:
             return True
     return False
+
+def get_index_by_question_text(question_text):
+    for i in range(len(question_list)):
+        if question_list[i]['question'] == question_text:
+            return i
+    return None
+
