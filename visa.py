@@ -3,7 +3,7 @@ from os import fork
 
 from app import app
 
-pid = 0#fork()
+pid = fork()
 if pid > 0:
     print('PID: %d' % pid)
     exit(0)
@@ -19,4 +19,4 @@ werkzeug.serving.WSGIRequestHandler.address_string = lambda self: self.headers.g
 # log to a file (log.txt), not stderr
 logging.basicConfig(filename='log.txt', level=logging.DEBUG, format='%(message)s')
 
-app.run(port=3010, debug=True)
+app.run(port=3010, debug=False)
