@@ -101,6 +101,10 @@ button.clicked {
     background-color: #DA5D2D;
 }
 
+button.clicked:hover {
+    background-color: #C34818;
+}
+
 a {
     color: inherit;
     text-decoration: none;
