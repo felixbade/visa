@@ -1,3 +1,11 @@
+# Secret stuff
+config.py
+kysymykset.yaml
+
+# Application logs
+log*.txt
+vastaukset*.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
