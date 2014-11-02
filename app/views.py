@@ -40,3 +40,7 @@ def q():
 def again():
     session['qnumber'] = 0
     return q()
+
+@app.route('/id')
+def id():
+    return str(session['id'])
