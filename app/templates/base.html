@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="fi">
+    <head>
+        <title>{% block title %}Tyhjä sivu{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="stylesheet" href="/style.css" type="text/css" />
+    </head>
+    <body>
+        <div class="content">
+            {% block content %}Täällä ei ole mitään...{% endblock %}
+            {% block footer %}
+            <footer>
+                &copy; 2014 Felix Bade
+            </footer>
+            {% endblock %}
+        </div>
+    </body>
+</html>

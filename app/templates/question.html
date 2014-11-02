@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{question}}</h1>
+
+<form action="/" method="POST">
+{% for answer in answers %}
+{% if answer == selected %}
+<button class="clicked" name="{{question}}" value="{{answer}}">{{answer}}</button>
+{% else %}
+<button class="unclicked" name="{{question}}" value="{{answer}}">{{answer}}</button>
+{% endif %}
+{% endfor %}
+</form>
+{% endblock %}
