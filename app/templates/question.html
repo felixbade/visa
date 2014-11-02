@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>{{question}}</h1>
+{% if description %}
+<p>{{description}}</p>
+{% endif %}
 
 <form action="/" method="POST">
 {% for answer in answers %}

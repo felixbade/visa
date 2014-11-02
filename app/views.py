@@ -1,6 +1,4 @@
-import time
-import json
-import base64
+import random
 
 from flask import render_template, session, request
 
@@ -27,10 +25,16 @@ def q():
 
     question = question_and_answers['question']
     answers = question_and_answers['answers']
+    selected = None
+    description = question_and_answers.get('description')
+
+    # shuffle answers if not stated otherwise
+    if question_and_answers.get('shuffle', True):
+        random.shuffle(answers)
     if question in session['answers']:
         selected = session['answers'][question]
 
-    return render_template('question.html', question=question, answers=answers, selected=selected)
+    return render_template('question.html', question=question, answers=answers, selected=selected, description=description)
 
 @app.route('/uudestaan')
 def again():
