@@ -1,0 +1,7 @@
+from app import scores
+
+team_scores = scores.calculate_scores_from_list()
+
+for team in team_scores:
+    scores, players = team_scores[team]
+    print ('%s: %d%% (%d pelaajaa)' % (team, scores, players))
