@@ -1,6 +1,6 @@
 # Secret stuff
 config.py
-kysymykset.yaml
+kysymykset*
 varsinainen*
 
 # Application logs
