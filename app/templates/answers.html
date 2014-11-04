@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Visan oikeat vastaukset</h1>
+{% for answer in answers %}
+<div>
+    <h2>{{answer.question}}</h2>
+    <p>{{answer.answer}}</p>
+</div>
+{% endfor %}
+{% endblock %}

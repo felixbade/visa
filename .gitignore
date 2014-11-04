@@ -2,6 +2,7 @@
 config.py
 kysymykset*
 varsinainen*
+results.txt
 
 # Application logs
 log*.txt

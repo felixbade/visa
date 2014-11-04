@@ -26,12 +26,15 @@ def get_correct_answer(question):
     answers = questions.get_question_and_answers_by_number(
             index)['answers']
     # first answer is correct, other answers are false
-    # return '1', not 1
-    return str(answers[0])
+    return answers[0]
 
 def get_number_of_questions():
     # first question is again the "what team are you in" question
     return questions.get_number_of_questions() - 1
+
+def get_empty_scores():
+    teams = questions.get_question_and_answers_by_number(0)['answers']
+    return {team: (0, 0) for team in teams}
 
 def calculate_scores_from_list():
     players = {}
@@ -58,7 +61,7 @@ def calculate_scores_from_list():
     # this has to be done in two phases because
     # 1) players can change their answers
     # 2) there can be multiple players per team
-    team_scores = {}
+    team_scores = get_empty_scores()
     for player in players:
         score, team = players[player]
         score_this_far = 0
@@ -69,9 +72,12 @@ def calculate_scores_from_list():
         new_players = players_this_far + 1
         team_scores.update({team: (new_score, new_players)})
 
+    # normilize results
     for team in team_scores:
         score, players = team_scores[team]
         total = get_number_of_questions()
         score /= float(players + 1)
         score /= total
-        print('%s: %d%% (%d pelaajaa)' % (team, int(100 * score), players))
+        team_scores.update({team: (int(100 * score), players)})
+    
+    return team_scores

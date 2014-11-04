@@ -3,7 +3,14 @@ import yaml
 from config import questions_file
 
 with open(questions_file) as f:
-    question_list = yaml.safe_load(f)
+    q = yaml.safe_load(f)
+    question_list = []
+    for question in q:
+        answers = []
+        for answer in question['answers']:
+            answers.append(str(answer))
+        question['answers'] = answers
+        question_list.append(question)
 
 def get_number_of_questions():
     return len(question_list)

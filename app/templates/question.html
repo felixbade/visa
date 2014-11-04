@@ -2,7 +2,7 @@
 {% block content %}
 <h1>{{question}}</h1>
 {% if description %}
-<p>{{description}}</p>
+<p>{{description|safe}}</p>
 {% endif %}
 
 <form action="/" method="POST">
