@@ -5,6 +5,9 @@ from config import questions_file
 with open(questions_file) as f:
     question_list = yaml.safe_load(f)
 
+def get_number_of_questions():
+    return len(question_list)
+
 def get_question_and_answers_by_number(number):
     if number >= 0 and number < len(question_list):
         return question_list[number]

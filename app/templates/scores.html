@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tulokset</h1>
+<div>
+{% for team in teams %}
+<p style="margin: 1em 0 0.3em 0;">{{team.name}} ({{team.value}}%)</p>
+<div style="width: {{team.value}}%; height: 35px; margin: 0; background-color: {{team.color}}"></div>
+{% endfor %}
+</div>
+{% endblock %}
