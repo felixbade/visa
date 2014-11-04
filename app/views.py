@@ -1,4 +1,5 @@
 import random
+import json
 
 from flask import render_template, session, request
 
@@ -57,12 +58,17 @@ def id():
 
 @app.route('/tulokset')
 def tulokset():
+    with open(config.results_file) as results:
+        scores = json.load(results)
+
     teams = [
-            {'name': 'Matematiikka', 'value': '42', 'color': '#177fa5'},
-            #{'name': 'Ohjelmointi', 'value': '100', 'color': '#83329d'},
-            {'name': 'Fysiikka', 'value': '79', 'color': '#db405d'},
-            #{'name': 'Maantieto', 'value': '84', 'color': '#f9754d'},
-            {'name': 'Kemia', 'value': '86', 'color': '#e9bb43'},
-            {'name': 'Biologia', 'value': '52', 'color': '#57a93b'}
+            {'name': 'Matematiikka', 'value': '0', 'color': '#177fa5'},
+            {'name': 'Fysiikka', 'value': '0', 'color': '#db405d'},
+            {'name': 'Kemia', 'value': '0', 'color': '#e9bb43'},
+            {'name': 'Biologia', 'value': '0', 'color': '#57a93b'}
             ]
+
+    for i in range(len(teams)):
+        teams[i]['value'] = str(scores[teams[i]['name']])
+
     return render_template('scores.html', teams=teams)
